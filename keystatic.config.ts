@@ -21,7 +21,12 @@ export default config({
           }
         }),
         description: fields.text({ label: 'Description', validation: { isRequired: true } }),
-        image: fields.image({ label: 'Cover Image', validation: { isRequired: true } }),
+        image: fields.image({ 
+          label: 'Cover Image', 
+          directory: 'src/content/assets',
+          publicPath: 'src/content/assets',
+          validation: { isRequired: true } 
+        }),
         createdAt: fields.date({ label: 'Created', validation: { isRequired: true } }),
         updatedAt: fields.date({ label: 'Updated' }),
         draft: fields.checkbox({ label: 'Draft', defaultValue: false }),
@@ -55,7 +60,12 @@ export default config({
          }),
         date: fields.date({ label: 'Date', validation: { isRequired: true } }),
         description: fields.text({ label: 'Description', validation: { isRequired: true } }),
-        image: fields.image({ label: 'Cover Image', validation: { isRequired: true } }),
+        image: fields.image({ 
+          label: 'Cover Image', 
+          directory: 'src/content/assets',
+          publicPath: 'src/content/assets',
+          validation: { isRequired: true } 
+        }),
         info: fields.array(
           fields.object({
             text: fields.text({ label: 'Text', validation: { isRequired: true } }),
