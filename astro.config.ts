@@ -46,7 +46,7 @@ export default defineConfig({
       lang: 'en',
     }
   }), react(), markdoc(), keystatic()],
-  // adapter: node({
-  //   mode: 'standalone'
-  // })
+  adapter: node({
+    mode: 'middleware'
+  })
 });
