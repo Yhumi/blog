@@ -3,9 +3,27 @@
     "id": 1,
     "icon": {
       "type": "lucide",
+      "name": "heart"
+    },
+    "text": "AquaDX (Chunithm)",
+    "link": "https://aquadx.net/u/yhumi/chu3"
+  },
+  {
+    "id": 2,
+    "icon": {
+      "type": "lucide",
       "name": "github"
     },
-    "text": "GitHub",
-    "link": "https://github.com/louisescher/spectre"
+    "text": "Github",
+    "link": "https://github.com/yhumi"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "lucide",
+      "name": "twitch"
+    },
+    "text": "Twitch",
+    "link": "https://twitch.tv/yhumixiv"
   }
 ]
