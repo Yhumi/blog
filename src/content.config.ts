@@ -55,7 +55,7 @@ const tags = defineCollection({
 });
 
 const posts = defineCollection({
-  loader: glob({ base: "src/content/posts", pattern: "**/*.{md,mdx}" }),
+  loader: glob({ base: "src/content/posts", pattern: "**/*.{md,mdx,mdoc}" }),
   schema: ({ image }) => z.object({
     title: z.string(),
     createdAt: z.coerce.date(),
@@ -70,7 +70,7 @@ const posts = defineCollection({
 });
 
 const projects = defineCollection({
-  loader: glob({ base: "src/content/projects", pattern: "**/*.{md,mdx}" }),
+  loader: glob({ base: "src/content/projects", pattern: "**/*.{md,mdx,mdoc}" }),
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
