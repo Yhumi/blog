@@ -30,3 +30,4 @@ jobs:
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
             cd ${{ vars.SITE_DIR }}
             git fetch && git merge
+            pnpm pm2restart
