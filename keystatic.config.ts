@@ -1,4 +1,17 @@
 import { config, fields, collection } from '@keystatic/core';
+import tags from './src/content/tags.json'
+
+function titleCase(str : string) {
+  var splitStr = str.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+  }
+  return splitStr.join(' '); 
+}
+
+const tagList = Array.from(tags).map(x => {
+  return { label: titleCase(x.id.replace('-', ' ')), value: x.id }
+});
 
 export default config({
   storage: {
@@ -39,8 +52,10 @@ export default config({
         updatedAt: fields.date({ label: 'Updated' }),
         draft: fields.checkbox({ label: 'Draft', defaultValue: false }),
         tags: fields.array(
-          fields.text({
-            label: 'Tag'
+          fields.select({
+            label: 'Tag',
+            options: tagList,
+            defaultValue: tagList[0].value
           }),
           {
             validation: {
