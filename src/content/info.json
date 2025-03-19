@@ -3,12 +3,20 @@
     "id": 1,
     "icon": {
       "type": "lucide",
+      "name": "heart"
+    },
+    "text": "Vivian ♥"
+  },
+  {
+    "id": 2,
+    "icon": {
+      "type": "lucide",
       "name": "cake"
     },
     "text": "28 (21 Nov '96)"
   },
   {
-    "id": 2,
+    "id": 3,
     "icon": {
       "type": "lucide",
       "name": "earth"
