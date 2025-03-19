@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "postbuild": "pagefind --site dist",
-    "pm2start": "astro build --port 4822 ",
+    "pm2build": "astro build --port 4822",
     "pm2restart": "astro build --port 4822 && pm2 restart yhumiblog",
     "pm2fetch": "git fetch && git merge"
   },
