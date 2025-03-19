@@ -16,15 +16,23 @@ export default config({
           name: { label: 'Title', validation: { isRequired: true } },
           slug: {
             generate: (name) => {
-              return name;
+              var curDate = new Date();
+              var month = curDate.getMonth() + 1;
+              return `${curDate.getFullYear()}/${month.toString().padStart(2, '0')}/${name.toLowerCase().replace(' ', '-')}`;
+            },
+            validation: {
+              pattern: {
+                regex: /\d{4}\/\d{2}\/[^\/\s]+/g,
+                message: 'Slugs must be in the format: yyyy/mm/post-title.'
+              }
             }
-          }
+          },
         }),
         description: fields.text({ label: 'Description', validation: { isRequired: true } }),
         image: fields.image({ 
           label: 'Cover Image', 
-          directory: 'src/content/assets',
-          publicPath: 'src/content/assets',
+          directory: 'src/content/assets/posts',
+          publicPath: '../../../assets/posts',
           validation: { isRequired: true } 
         }),
         createdAt: fields.date({ label: 'Created', validation: { isRequired: true } }),
@@ -54,7 +62,15 @@ export default config({
           name: { label: 'Title', validation: { isRequired: true } },
           slug: {
             generate: (name) => {
-              return name;
+              var curDate = new Date();
+              var month = curDate.getMonth() + 1;
+              return `${curDate.getFullYear()}/${month.toString().padStart(2, '0')}/${name.toLowerCase().replace(' ', '-')}`;
+            },
+            validation: {
+              pattern: {
+                regex: /\d{4}\/\d{2}\/[^\/\s]+/g,
+                message: 'Slugs must be in the format: yyyy/mm/post-title.'
+              }
             }
           }
          }),
@@ -62,8 +78,8 @@ export default config({
         description: fields.text({ label: 'Description', validation: { isRequired: true } }),
         image: fields.image({ 
           label: 'Cover Image', 
-          directory: 'src/content/assets',
-          publicPath: 'src/content/assets',
+          directory: 'src/content/assets/projects',
+          publicPath: '../../../assets/projects',
           validation: { isRequired: true } 
         }),
         info: fields.array(
