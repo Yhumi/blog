@@ -1,0 +1,77 @@
+---
+title: Chunithm AiC Card Reader
+date: 2025-03-19
+description: AiC card reader for Chunithm & Segatools for use in home setups with NFC smartcard readers such as the acr122u.
+image: ../../../assets/2025/03/aimeio-cardreader/cover.jpg
+info:
+  - text: C
+    icon:
+      type: lucide
+      name: braces
+  - text: GitHub
+    link: https://github.com/Yhumi/aimeio-cardreader
+    icon:
+      type: lucide
+      name: github
+  
+---
+
+# Starting the Project
+The project initially started out with a desire to be able to scan my e-amusement pass on my PC when I'm playing chunithm on my home setup.
+I bought a smartcard reader hastily without checking that it had FeLiCa support, then finally settled after reading into it on the **acr122u**.
+
+Once I had a smartcard reader that could actually recognise the AiC card, I had assumed I'd be able to build one of the existing projects out there 
+without issue and use it, however the two projects I could find [raviddog's aimeio-pcsc](https://github.com/raviddog/aimeio-pcsc) and 
+[AkaiiKitsune's aimeio-cardreader](https://github.com/AkaiiKitsune/aimeio-cardreader) both had their issues with my setup, so I turned to forking aiemio-cardreader.
+
+# Yhumi/aimeio-cardreader
+Existing as a fork of AkaiiKitsune's work, it implements the following extras on top of the original repo:
+- raviddog's FeLiCa Serial -> Mifare Access Code conversion via `aimeio-felicadb.txt`
+- A better scanning system/timeout system that acknowledges when the game should have read the card, stopping any erroneous double-scanning issues.
+
+# Building the project
+
+Building (on linux) is as easy as installing meson & ninja, then running the following commands:
+```
+meson setup --cross cross-mingw-64.txt b64
+ninja -C b64
+```
+
+This should output `src/libaimeio.dll` and `src/aimetest.exe`, rename libaimeio.dll -> aimeio.dll and you can use aimetest.exe to check functionality.
+
+# Using the project
+
+Copy `(lib)aimeio.dll` to your `chunithm/App/bin/` folder, update `segatools.ini` to add the configuration lines:
+
+```ini
+[aimeio]
+path=aimeio.dll    ;Path to aimeio.dll
+scan=0x0D          ;Sets the key which will be used to insert a card in game. The default is 'Return'
+
+;Everything below this line is optional.
+
+readerOptional=1            ;Make reader optional, so that you can still use the keyboard
+readerName=ACS ACR122 0     ;Manually select which reader to use
+disableBuzzer=1             ;Disable the buzzer 
+;aimePath=""                ;Manually specify an aime.txt file
+;felicaPath=""              ;Manually specify a felica.txt file
+;debug=0                    ;Display function calls
+```
+
+Then create your `aimeio_felicadb.txt` and `aime.txt`, and have fun! ♥
+
+### aimeio_felicadb.txt format
+```
+<felica1> <access_code1>
+<felica2> <access_code2>
+12345678 1234567890
+```
+
+### aime.txt format
+```
+<access_code1>
+<access_code2>
+```
+
+---
+Provided as-is, build it yourself, modify freely, have fun (and let me know if you improve it) ♥
