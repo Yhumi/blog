@@ -12,8 +12,30 @@ export default config({
       path: 'src/content/posts/**',
       format: { contentField: 'content' },
       schema: {
-        title: fields.text({ label: 'Title' }),
-        slug: fields.slug({ name: { label: 'Slug' } }),
+        title: fields.slug({ 
+          name: { label: 'Title', validation: { isRequired: true } },
+          slug: {
+            generate: (name) => {
+              return name;
+            }
+          }
+        }),
+        description: fields.text({ label: 'Description', validation: { isRequired: true } }),
+        image: fields.image({ label: 'Cover Image', validation: { isRequired: true } }),
+        createdAt: fields.date({ label: 'Created', validation: { isRequired: true } }),
+        updatedAt: fields.date({ label: 'Updated' }),
+        draft: fields.checkbox({ label: 'Draft', defaultValue: false }),
+        tags: fields.array(
+          fields.text({
+            label: 'Tag'
+          }),
+          {
+            validation: {
+              length: { min: 1 }
+            }
+          }
+        ),
+
         content: fields.mdx({ label: 'Content' }),
       },
     }),
@@ -24,7 +46,7 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ 
-          name: { label: 'Title' },
+          name: { label: 'Title', validation: { isRequired: true } },
           slug: {
             generate: (name) => {
               return name;
@@ -33,7 +55,7 @@ export default config({
          }),
         date: fields.date({ label: 'Date', validation: { isRequired: true } }),
         description: fields.text({ label: 'Description', validation: { isRequired: true } }),
-        image: fields.image({ label: 'Cover Image' }),
+        image: fields.image({ label: 'Cover Image', validation: { isRequired: true } }),
         info: fields.array(
           fields.object({
             text: fields.text({ label: 'Text', validation: { isRequired: true } }),
@@ -43,14 +65,19 @@ export default config({
                   options: [
                     {
                       label: 'Lucide',
-                      value: 'lucide'
+                      value: 'lucide',
                     }
                   ], 
                   defaultValue: 'lucide' }),
-              name: fields.text({ label: 'Name' })
+              name: fields.text({ label: 'Name', validation: { isRequired: true } })
             }),
             link: fields.url({ label: 'Link' })
-          })
+          }),
+          {
+            validation: {
+              length: { min: 1 }
+            }
+          }
         ),
 
         content: fields.mdx({ label: 'Content' }),
