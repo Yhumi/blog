@@ -3,10 +3,10 @@
     "id": 1,
     "icon": {
       "type": "lucide",
-      "name": "heart"
+      "name": "twitter"
     },
-    "text": "AquaDX (Chunithm)",
-    "link": "https://aquadx.net/u/yhumi/chu3"
+    "text": "Twitter",
+    "link": "https://twitter.com/YhumiMiyei"
   },
   {
     "id": 2,
@@ -25,5 +25,14 @@
     },
     "text": "Twitch",
     "link": "https://twitch.tv/yhumixiv"
+  },
+  {
+    "id": 4,
+    "icon": {
+       "type": "lucide",
+       "name": "mail"
+    },
+    "text": "yhumi@miyei.me",
+    "link": "mailto:yhumi@miyei.me"
   }
 ]
