@@ -15,7 +15,7 @@ import keystatic from '@keystatic/astro'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://blog.miyei.me',
+  site: 'https://miyei.me',
   output: 'static',
   integrations: [expressiveCode({
     themes: [spectreDark],
