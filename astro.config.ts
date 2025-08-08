@@ -24,7 +24,7 @@ export default defineConfig({
     openGraph: {
       home: {
         title: 'Yhumi',
-        description: 'Puppygirl, FFXIV raider, Chunithm addict, and software developer ♥'
+        description: 'Puppygirl, rhythm game enthusiast, ex-XIV raider, and software developer ♥'
       },
       blog: {
         title: 'Blog',
