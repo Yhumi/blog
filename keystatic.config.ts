@@ -31,7 +31,7 @@ export default config({
             generate: (name) => {
               var curDate = new Date();
               var month = curDate.getMonth() + 1;
-              return `${curDate.getFullYear()}/${month.toString().padStart(2, '0')}/${name.toLowerCase().replaceAll(" ", "-")}`;
+              return `${curDate.getFullYear()}/${month.toString().padStart(2, '0')}/${name.toLowerCase().replace(' ', '-')}`;
             },
             validation: {
               pattern: {
@@ -79,7 +79,7 @@ export default config({
             generate: (name) => {
               var curDate = new Date();
               var month = curDate.getMonth() + 1;
-              return `${curDate.getFullYear()}/${month.toString().padStart(2, '0')}/${name.toLowerCase().replaceAll(" ", "-")}`;
+              return `${curDate.getFullYear()}/${month.toString().padStart(2, '0')}/${name.toLowerCase().replace(' ', '-')}`;
             },
             validation: {
               pattern: {
